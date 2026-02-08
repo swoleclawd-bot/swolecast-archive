@@ -34,7 +34,7 @@ export default async function EpisodePage(props: {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Back link */}
-      <Link href="/episodes" className="inline-flex items-center gap-1 text-zinc-500 hover:text-orange-500 transition text-sm mb-6">
+      <Link href="/episodes" className="inline-flex items-center gap-1 text-[#6A5890] hover:text-cyan-400 transition text-sm mb-6">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
@@ -46,7 +46,7 @@ export default async function EpisodePage(props: {
         <h1 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
           {episode.title}
         </h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-[#B8A9D4]">
           {episode.published_at && (
             <span className="flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default async function EpisodePage(props: {
 
       {/* YouTube Embed */}
       {youtubeId && (
-        <div className="mb-8 rounded-xl overflow-hidden border border-zinc-800">
+        <div className="mb-8 rounded-xl overflow-hidden border border-[#2D1B4E]">
           <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
             <iframe
               src={`https://www.youtube.com/embed/${youtubeId}`}
@@ -91,9 +91,9 @@ export default async function EpisodePage(props: {
 
       {/* Description */}
       {episode.description && (
-        <div className="mb-8 p-5 bg-zinc-900 border border-zinc-800 rounded-xl">
-          <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-wide mb-2">Description</h2>
-          <p className="text-zinc-300 whitespace-pre-wrap">{episode.description}</p>
+        <div className="mb-8 p-5 bg-[#1A0E2E] border border-[#2D1B4E] rounded-xl">
+          <h2 className="text-sm font-bold text-[#B8A9D4] uppercase tracking-wide mb-2">Description</h2>
+          <p className="text-[#D4C4F0] whitespace-pre-wrap">{episode.description}</p>
         </div>
       )}
 
@@ -102,12 +102,12 @@ export default async function EpisodePage(props: {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-white">Full Transcript</h2>
-            <span className="text-sm text-zinc-500">
+            <span className="text-sm text-[#6A5890]">
               {formatNumber(transcript.word_count)} words
             </span>
           </div>
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 md:p-8">
-            <div className="text-zinc-300 leading-relaxed whitespace-pre-wrap text-sm md:text-base max-h-[600px] overflow-y-auto pr-2">
+          <div className="bg-[#1A0E2E] border border-[#2D1B4E] rounded-xl p-6 md:p-8">
+            <div className="text-[#D4C4F0] leading-relaxed whitespace-pre-wrap text-sm md:text-base max-h-[600px] overflow-y-auto pr-2">
               {transcript.content}
             </div>
           </div>

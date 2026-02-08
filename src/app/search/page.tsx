@@ -20,10 +20,10 @@ export default async function SearchPage(props: {
             name="q"
             defaultValue={query}
             placeholder="Search episodes, players, topics..."
-            className="w-full bg-zinc-900 border-2 border-zinc-700 rounded-xl px-6 py-4 pl-12 text-white text-lg placeholder-zinc-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
+            className="w-full bg-[#1A0E2E] border-2 border-[#3D2663] rounded-xl px-6 py-4 pl-12 text-white text-lg placeholder-[#6A5890] focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition"
             autoFocus
           />
-          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6A5890]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
@@ -32,29 +32,29 @@ export default async function SearchPage(props: {
       {/* Results Header with Sort */}
       {query && (
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <h1 className="text-lg text-zinc-400">
+          <h1 className="text-lg text-[#B8A9D4]">
             {results.length > 0 ? (
               <>
                 Found <span className="text-white font-bold">{results.length}</span> episodes matching{' '}
-                <span className="text-orange-500 font-bold">&ldquo;{query}&rdquo;</span>
+                <span className="text-cyan-400 font-bold">&ldquo;{query}&rdquo;</span>
               </>
             ) : (
               <>
-                No results for <span className="text-orange-500 font-bold">&ldquo;{query}&rdquo;</span>
+                No results for <span className="text-cyan-400 font-bold">&ldquo;{query}&rdquo;</span>
               </>
             )}
           </h1>
           
           {results.length > 0 && (
             <div className="flex items-center gap-2">
-              <span className="text-sm text-zinc-500">Sort:</span>
-              <div className="flex bg-zinc-800 rounded-lg p-1">
+              <span className="text-sm text-[#6A5890]">Sort:</span>
+              <div className="flex bg-[#1E1335] rounded-lg p-1">
                 <Link
                   href={`/search?q=${encodeURIComponent(query)}&sort=newest`}
                   className={`px-3 py-1.5 text-sm rounded-md transition ${
                     sort === 'newest' 
-                      ? 'bg-orange-500 text-white' 
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-gradient-to-r from-[#2DDCE0] to-[#7B5EA7] text-white' 
+                      : 'text-[#B8A9D4] hover:text-white'
                   }`}
                 >
                   Newest
@@ -63,8 +63,8 @@ export default async function SearchPage(props: {
                   href={`/search?q=${encodeURIComponent(query)}&sort=oldest`}
                   className={`px-3 py-1.5 text-sm rounded-md transition ${
                     sort === 'oldest' 
-                      ? 'bg-orange-500 text-white' 
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-gradient-to-r from-[#2DDCE0] to-[#7B5EA7] text-white' 
+                      : 'text-[#B8A9D4] hover:text-white'
                   }`}
                 >
                   Oldest
@@ -73,8 +73,8 @@ export default async function SearchPage(props: {
                   href={`/search?q=${encodeURIComponent(query)}&sort=relevance`}
                   className={`px-3 py-1.5 text-sm rounded-md transition ${
                     sort === 'relevance' 
-                      ? 'bg-orange-500 text-white' 
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-gradient-to-r from-[#2DDCE0] to-[#7B5EA7] text-white' 
+                      : 'text-[#B8A9D4] hover:text-white'
                   }`}
                 >
                   Relevance
@@ -92,23 +92,23 @@ export default async function SearchPage(props: {
 
           return (
             <Link key={result.id} href={`/episodes/${result.id}`}>
-              <div className="group bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-orange-500/50 transition-all cursor-pointer mb-4">
-                <h3 className="text-white font-semibold group-hover:text-orange-500 transition-colors mb-2">
+              <div className="group bg-[#1A0E2E] border border-[#2D1B4E] rounded-xl p-5 hover:border-cyan-400/50 transition-all cursor-pointer mb-4">
+                <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors mb-2">
                   {result.title}
                 </h3>
-                <div className="flex items-center gap-3 text-sm text-zinc-500 mb-3">
+                <div className="flex items-center gap-3 text-sm text-[#6A5890] mb-3">
                   {result.published_at && <span>{formatDate(result.published_at)}</span>}
                   {result.duration_seconds && (
                     <>
-                      <span className="text-zinc-700">•</span>
+                      <span className="text-[#4A3870]">•</span>
                       <span>{formatDuration(result.duration_seconds)}</span>
                     </>
                   )}
                 </div>
-                <p className="text-sm text-zinc-400 leading-relaxed">
+                <p className="text-sm text-[#B8A9D4] leading-relaxed">
                   {parts.map((part, i) =>
                     i % 2 === 1 ? (
-                      <mark key={i} className="bg-orange-500/30 text-orange-300 rounded px-0.5">
+                      <mark key={i} className="bg-cyan-400/30 text-pink-300 rounded px-0.5">
                         {part}
                       </mark>
                     ) : (
@@ -126,7 +126,7 @@ export default async function SearchPage(props: {
         <div className="text-center py-16">
           <div className="text-6xl mb-4">🔍</div>
           <h2 className="text-xl font-bold text-white mb-2">Search the Swolecast Archive</h2>
-          <p className="text-zinc-500">
+          <p className="text-[#6A5890]">
             Search across 478 episodes and 4.8M+ words of fantasy football wisdom.
             <br />
             Try player names, strategies, or topics.

@@ -17,24 +17,24 @@ export default function HomePage() {
       <SearchHero episodeCount={episodeCount} wordCount={wordCount} />
 
       {/* Stats Bar */}
-      <section className="border-y border-zinc-800 bg-zinc-900/50">
+      <section className="border-y border-[#2D1B4E] bg-[#1A0E2E]/50">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-2xl font-black text-orange-500">{episodeCount}</div>
-              <div className="text-xs text-zinc-500 uppercase tracking-wide mt-1">Episodes</div>
+              <div className="text-2xl font-black text-cyan-400">{episodeCount}</div>
+              <div className="text-xs text-[#6A5890] uppercase tracking-wide mt-1">Episodes</div>
             </div>
             <div>
               <div className="text-2xl font-black text-white">{(wordCount / 1000000).toFixed(1)}M+</div>
-              <div className="text-xs text-zinc-500 uppercase tracking-wide mt-1">Words Transcribed</div>
+              <div className="text-xs text-[#6A5890] uppercase tracking-wide mt-1">Words Transcribed</div>
             </div>
             <div>
               <div className="text-2xl font-black text-white">4</div>
-              <div className="text-xs text-zinc-500 uppercase tracking-wide mt-1">Hosts</div>
+              <div className="text-xs text-[#6A5890] uppercase tracking-wide mt-1">Hosts</div>
             </div>
             <div>
               <div className="text-2xl font-black text-white">100%</div>
-              <div className="text-xs text-zinc-500 uppercase tracking-wide mt-1">Searchable</div>
+              <div className="text-xs text-[#6A5890] uppercase tracking-wide mt-1">Searchable</div>
             </div>
           </div>
         </div>
@@ -44,9 +44,9 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-black text-white">
-            Recent <span className="text-orange-500">Episodes</span>
+            Recent <span className="text-cyan-400">Episodes</span>
           </h2>
-          <Link href="/episodes" className="text-sm text-orange-500 hover:text-orange-400 font-medium transition">
+          <Link href="/episodes" className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition">
             View All →
           </Link>
         </div>
@@ -68,9 +68,9 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-black text-white">
-            Best <span className="text-orange-500">Of</span> 🎯
+            Best <span className="text-cyan-400">Of</span> 🎯
           </h2>
-          <Link href="/best-of" className="text-sm text-orange-500 hover:text-orange-400 font-medium transition">
+          <Link href="/best-of" className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition">
             See All Quotes →
           </Link>
         </div>

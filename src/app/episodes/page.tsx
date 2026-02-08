@@ -13,9 +13,9 @@ export default function EpisodesPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-black text-white mb-2">
-          All <span className="text-orange-500">Episodes</span>
+          All <span className="text-cyan-400">Episodes</span>
         </h1>
-        <p className="text-zinc-500">
+        <p className="text-[#6A5890]">
           {episodes.length} episodes, newest first. Every episode has a full searchable transcript.
         </p>
       </div>

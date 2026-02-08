@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
+  /* Swolecast Cover Art Palette */
+  --swole-bg: #150D25;
+  --swole-bg-light: #1A0E2E;
+  --swole-bg-card: #1E1335;
+  --swole-bg-hover: #261845;
+  --swole-cyan: #2DDCE0;
+  --swole-magenta: #E83E8C;
+  --swole-pink: #FF69B4;
+  --swole-purple: #7B5EA7;
+  --swole-purple-dark: #3D2663;
+  --swole-purple-glow: #6A4C93;
+  --swole-blue: #4A90D9;
+  --swole-border: #2D1B4E;
+  --swole-border-light: #3D2663;
+  --text-primary: #F5F5F5;
+  --text-secondary: #B8A9D4;
+  --text-muted: #6A5890;
+
+  --background: var(--swole-bg);
+  --foreground: var(--text-primary);
 }
 
 body {
@@ -11,22 +29,44 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Swolecast accent colors for Tailwind overrides */
+.bg-swole { background-color: var(--swole-bg); }
+.bg-swole-light { background-color: var(--swole-bg-light); }
+.bg-swole-card { background-color: var(--swole-bg-card); }
+.bg-swole-hover { background-color: var(--swole-bg-hover); }
+
+.text-swole-cyan { color: var(--swole-cyan); }
+.text-swole-magenta { color: var(--swole-magenta); }
+.text-swole-pink { color: var(--swole-pink); }
+.text-swole-purple { color: var(--swole-purple); }
+.text-swole-blue { color: var(--swole-blue); }
+.text-swole-muted { color: var(--text-muted); }
+.text-swole-secondary { color: var(--text-secondary); }
+
+.border-swole { border-color: var(--swole-border); }
+.border-swole-light { border-color: var(--swole-border-light); }
+
+.bg-accent { background-color: var(--swole-cyan); }
+.bg-accent-alt { background-color: var(--swole-magenta); }
+.text-accent { color: var(--swole-cyan); }
+.text-accent-alt { color: var(--swole-magenta); }
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #18181b;
+  background: var(--swole-bg-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: var(--swole-purple-dark);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: var(--swole-purple);
 }
 
 /* Line clamp utility */
