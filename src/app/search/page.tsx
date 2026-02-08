@@ -138,7 +138,7 @@ export default async function SearchPage(props: {
           <div className="text-6xl mb-4">🔍</div>
           <h2 className="text-xl font-bold text-white mb-2">Search the Swolecast Archive</h2>
           <p className="text-[#6A5890]">
-            Search across 478 episodes and 4.8M+ words of fantasy football wisdom.
+            Search across 290 episodes and 2.9M+ words of fantasy football wisdom.
             <br />
             Try player names, strategies, or topics.
           </p>
