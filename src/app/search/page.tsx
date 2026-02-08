@@ -97,11 +97,22 @@ export default async function SearchPage(props: {
                   {result.title}
                 </h3>
                 <div className="flex items-center gap-3 text-sm text-[#6A5890] mb-3">
-                  {result.published_at && <span>{formatDate(result.published_at)}</span>}
+                  <span className="flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    {result.published_at ? formatDate(result.published_at) : 'Date unknown'}
+                  </span>
                   {result.duration_seconds && (
                     <>
                       <span className="text-[#4A3870]">•</span>
                       <span>{formatDuration(result.duration_seconds)}</span>
+                    </>
+                  )}
+                  {result.transcript_word_count && (
+                    <>
+                      <span className="text-[#4A3870]">•</span>
+                      <span>{result.transcript_word_count.toLocaleString()} words</span>
                     </>
                   )}
                 </div>
