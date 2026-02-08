@@ -29,7 +29,9 @@ function extractSnippet(content: string, query: string, contextChars: number = 1
   return snippet;
 }
 
-export function searchEpisodes(query: string, limit: number = 20): SearchResult[] {
+export type SortOrder = 'relevance' | 'newest' | 'oldest';
+
+export function searchEpisodes(query: string, limit: number = 20, sort: SortOrder = 'relevance'): SearchResult[] {
   if (!query || query.trim().length === 0) return [];
 
   const db = getDb();
@@ -43,6 +45,14 @@ export function searchEpisodes(query: string, limit: number = 20): SearchResult[
     .join(' OR ');
 
   if (!cleanQuery) return [];
+
+  // Determine sort order
+  let orderBy = 'ORDER BY rank';
+  if (sort === 'newest') {
+    orderBy = 'ORDER BY e.published_at DESC';
+  } else if (sort === 'oldest') {
+    orderBy = 'ORDER BY e.published_at ASC';
+  }
 
   try {
     const rows = db.prepare(`
@@ -58,7 +68,7 @@ export function searchEpisodes(query: string, limit: number = 20): SearchResult[
       JOIN transcripts t ON t.episode_id = fts.episode_id
       JOIN episodes e ON e.id = fts.episode_id
       WHERE transcripts_fts MATCH ?
-      ORDER BY rank
+      ${orderBy}
       LIMIT ?
     `).all(cleanQuery, limit) as (SearchResult & { content: string })[];
 

@@ -1,13 +1,14 @@
 import Link from 'next/link';
-import { searchEpisodes } from '@/lib/search';
+import { searchEpisodes, SortOrder } from '@/lib/search';
 import { formatDate, formatDuration, highlightText } from '@/lib/utils';
 
 export default async function SearchPage(props: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; sort?: string }>;
 }) {
   const searchParams = await props.searchParams;
   const query = searchParams.q || '';
-  const results = query ? searchEpisodes(query, 30) : [];
+  const sort = (searchParams.sort as SortOrder) || 'newest';
+  const results = query ? searchEpisodes(query, 50, sort) : [];
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -28,9 +29,9 @@ export default async function SearchPage(props: {
         </div>
       </form>
 
-      {/* Results */}
+      {/* Results Header with Sort */}
       {query && (
-        <div className="mb-6">
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <h1 className="text-lg text-zinc-400">
             {results.length > 0 ? (
               <>
@@ -43,6 +44,44 @@ export default async function SearchPage(props: {
               </>
             )}
           </h1>
+          
+          {results.length > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-zinc-500">Sort:</span>
+              <div className="flex bg-zinc-800 rounded-lg p-1">
+                <Link
+                  href={`/search?q=${encodeURIComponent(query)}&sort=newest`}
+                  className={`px-3 py-1.5 text-sm rounded-md transition ${
+                    sort === 'newest' 
+                      ? 'bg-orange-500 text-white' 
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  Newest
+                </Link>
+                <Link
+                  href={`/search?q=${encodeURIComponent(query)}&sort=oldest`}
+                  className={`px-3 py-1.5 text-sm rounded-md transition ${
+                    sort === 'oldest' 
+                      ? 'bg-orange-500 text-white' 
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  Oldest
+                </Link>
+                <Link
+                  href={`/search?q=${encodeURIComponent(query)}&sort=relevance`}
+                  className={`px-3 py-1.5 text-sm rounded-md transition ${
+                    sort === 'relevance' 
+                      ? 'bg-orange-500 text-white' 
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  Relevance
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -88,7 +127,7 @@ export default async function SearchPage(props: {
           <div className="text-6xl mb-4">🔍</div>
           <h2 className="text-xl font-bold text-white mb-2">Search the Swolecast Archive</h2>
           <p className="text-zinc-500">
-            Search across 214 episodes of fantasy football wisdom.
+            Search across 478 episodes and 4.8M+ words of fantasy football wisdom.
             <br />
             Try player names, strategies, or topics.
           </p>
